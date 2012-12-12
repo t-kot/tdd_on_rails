@@ -41,3 +41,30 @@
 	
 ※guard initはGuardfileに必要な設定を追加書き込みするだけなので、同じコマンドを複数実行すると設定が重複するので注意。
 
+◯FactoryGirlのための設定
+	
+	vi spec/spec_helper.rb
+	
+	require 'rubygems'
+	require 'spork'
+	+require 'factory_girl_rails'
+	Spork.prefork do 
+	(省略)
+	
+	vi features/conf.rb(新規作成)
+	
+	require 'factory_girl_rails'
+	
+◯その他の設定
+
+例えばDeviseが提供するTest用のヘルパーやFactoryGirlが提供するシンタックスシュガーを利用するための設定などもspec_helper.rbに書く。
+
+
+
+
+
+
+
+
+
+
