@@ -1,7 +1,9 @@
+#coding: utf-8
 require 'simplecov'
 SimpleCov.start 'rails'
 require 'rubygems'
 require 'spork'
+require 'factory_girl_rails'
 
 Spork.prefork do
 end
@@ -24,4 +26,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = false
   config.order = "random"
+  config.include FactoryGirl::Syntax::Methods
+  ## FactoryGirlはcreate(:user)のような省略記法も可能で、上をincludeすることで
+  #Rspec全体で省略記法が可能になる
 end

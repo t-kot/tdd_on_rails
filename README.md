@@ -47,7 +47,7 @@
 	
 	require 'rubygems'
 	require 'spork'
-	+require 'factory_girl_rails'
+	++require 'factory_girl_rails'
 	Spork.prefork do 
 	(省略)
 	
@@ -58,6 +58,18 @@
 ◯その他の設定
 
 例えばDeviseが提供するTest用のヘルパーやFactoryGirlが提供するシンタックスシュガーを利用するための設定などもspec_helper.rbに書く。
+
+	vi spec/spec_helper.rb
+	
+	RSpec.configure do |config|
+		config.fixture_path = "#{::Rails.root}/spec/fixtures"
+		config.use_transactional_fixtures = true
+		config.infer_base_class_for_anonymous_controllers = false
+		config.order = "random"
+		++config.include FactoryGirl::Syntax::Methods #=> RSpecでcreate(:user)のようなFactoryGirlの省略記法を使うときに記述する。
+
+
+
 
 
 
