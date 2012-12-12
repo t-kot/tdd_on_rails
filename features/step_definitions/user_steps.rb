@@ -14,10 +14,25 @@ When /^以下のユーザが存在している:$/ do |table|
   end
 end
 
+When /^メールアドレスが(.*)のユーザでログインする$/ do |email|
+  visit new_user_session_path
+  fill_in("user_email", with:email)
+  fill_in("user_password", with:"testtest")
+  click_button("Sign in")
+end
+
 Then /^正常にユーザ登録ができること$/ do
   page.body.should =~ /#{Regexp.escape("Welcome! You have signed up successfully.")}/m
 end
 
 Then /^ユーザ登録に失敗すること$/ do
   page.body.should =~ /#{Regexp.escape("prohibited this user from being saved")}/m
+end
+
+Then /^正常にログインできること$/ do
+  page.body.should =~ /#{Regexp.escape("Signed in successfully.")}/m
+end
+
+Then /^ログインに失敗すること$/ do
+  page.body.should =~ /#{Regexp.escape("Invalid email or password.")}/m
 end
