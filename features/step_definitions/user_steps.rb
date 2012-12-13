@@ -14,6 +14,7 @@ When /^以下のユーザが存在している:$/ do |table|
   end
 end
 
+
 When /^メールアドレスが(.*)のユーザでログインする$/ do |email|
   visit new_user_session_path
   fill_in("user_email", with:email)

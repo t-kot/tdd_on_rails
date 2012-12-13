@@ -7,4 +7,9 @@ FactoryGirl.define do
 
     #after(:create){|user| user.confirm!} comment out when you use devise confirmation module
   end
+
+  factory :tweet do
+    sequence(:body){|n| "Tweet#{n}"}
+    user
+  end
 end

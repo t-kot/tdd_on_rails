@@ -29,4 +29,6 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   ## FactoryGirlはcreate(:user)のような省略記法も可能で、上をincludeすることで
   #Rspec全体で省略記法が可能になる
+  config.include Devise::TestHelpers,type: :controller
+  config.extend ControllerMacros, type: :controller
 end
